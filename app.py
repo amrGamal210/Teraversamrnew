@@ -424,4 +424,3 @@ st.markdown("""
         <p>جميع الحقوق محفوظة © 2026 للمهندس <a href='https://github.com/AmrGamalAwad' target='_blank'>عمرو جمال عوض</a> 👑</p>
         
         <div class='social-links'>
-
