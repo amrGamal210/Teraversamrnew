@@ -6,12 +6,12 @@ import re
 
 # 1. إعدادات الصفحة الاحترافية المطلقة
 st.set_page_config(
-    page_title="Surveying Traverse Pro | Eng. Amr Gamal", 
+    page_title="منصة الترافيرس الاحترافية | م. عمرو جمال", 
     page_icon="👑", 
     layout="centered"
 )
 
-# 2. هندسة الديكور والنيون الفائق وحظر ستريم ليت بالكامل
+# 2. هندسة الديكور والتعريب البصري وتأثيرات النيون الخارقة
 st.markdown("""
     <style>
     #MainMenu {visibility: hidden;}
@@ -20,38 +20,52 @@ st.markdown("""
     div[data-testid="stStatusWidget"] {visibility: hidden;}
     .viewerBadge {display: none !important;}
     
+    /* توجيه الموقع بالكامل للغة العربية */
+    html, body, [data-testid="stAppViewContainer"] {
+        direction: rtl;
+        text-align: right;
+    }
+    
+    /* 🟢 خلفية نيون مساحية شبكية متحركة مطورة */
     .stApp {
-        background-color: #040905;
+        background-color: #030704;
         background-image: 
-            linear-gradient(rgba(0, 255, 102, 0.12) 1.5px, transparent 1.5px),
-            linear-gradient(90deg, rgba(0, 255, 102, 0.12) 1.5px, transparent 1.5px);
-        background-size: 40px 40px;
+            linear-gradient(rgba(0, 255, 102, 0.09) 1.5px, transparent 1.5px),
+            linear-gradient(90deg, rgba(0, 255, 102, 0.09) 1.5px, transparent 1.5px);
+        background-size: 45px 45px;
         color: #E5E9E6;
-        animation: gridMove 20s linear infinite;
+        animation: gridMove 25s linear infinite;
     }
     
     @keyframes gridMove {
         0% { background-position: 0 0; }
-        100% { background-position: 40px 80px; }
+        100% { background-position: 45px 90px; }
     }
     
-    .brand-logo-container { text-align: center; padding: 10px 0; margin-bottom: 10px; }
-    .brand-logo { font-size: 45px; text-shadow: 0px 0px 25px #00FF66; animation: pulse 2s infinite alternate; }
-    @keyframes pulse { 0% { transform: scale(1); } 100% { transform: scale(1.05); } }
+    /* لوجو التاج الملكي المخصص والمشع */
+    .brand-logo-container { text-align: center; padding: 10px 0; margin-bottom: 5px; }
+    .brand-logo { font-size: 50px; text-shadow: 0px 0px 25px #00FF66, 0px 0px 50px rgba(0, 255, 102, 0.4); animation: pulse 2s infinite alternate; }
+    @keyframes pulse { 0% { transform: scale(1); } 100% { transform: scale(1.03); } }
     
-    h1 { color: #00FF66 !important; font-family: 'Segoe UI', Arial, sans-serif; text-shadow: 0px 0px 20px #00FF66 !important; text-align: center; font-weight: 900 !important; margin-top: -10px !important; }
-    h2, h3 { color: #00FF66 !important; text-shadow: 0px 0px 12px rgba(0, 255, 102, 0.5) !important; }
+    h1 { color: #00FF66 !important; font-family: 'Segoe UI', Arial, sans-serif; text-shadow: 0px 0px 20px #00FF66 !important; text-align: center; font-weight: 900 !important; }
+    h2, h3, h4 { color: #00FF66 !important; text-shadow: 0px 0px 12px rgba(0, 255, 102, 0.4) !important; text-align: right; }
     
-    button[data-baseweb="tab"] { color: #88aa88 !important; font-size: 16px !important; }
+    /* ستايل التبويبات النيون العربي */
+    button[data-baseweb="tab"] { color: #88aa88 !important; font-size: 17px !important; font-weight: bold !important; }
     button[aria-selected="true"] { color: #00FF66 !important; border-bottom: 3px solid #00FF66 !important; text-shadow: 0px 0px 10px rgba(0, 255, 102, 0.6) !important; }
     
+    /* تقوية حواف النيون للقوائم والجداول والملفات */
     div[data-baseweb="select"], div[data-baseweb="input"], .stDataFrame, div[data-testid="stFileUploader"], .stAlert {
         border: 2px solid #00FF66 !important;
-        box-shadow: 0px 0px 20px rgba(0, 255, 102, 0.25) !important;
+        box-shadow: 0px 0px 20px rgba(0, 255, 102, 0.2) !important;
         border-radius: 14px !important;
-        background-color: rgba(4, 8, 4, 0.95) !important;
+        background-color: rgba(3, 6, 3, 0.96) !important;
     }
     
+    /* تعديل محاذاة النصوص داخل خانات الإدخال للعربي */
+    input { text-align: right !important; color: #E5E9E6 !important; }
+    
+    /* زرار الحساب المتوهج الخارق */
     .stButton>button {
         background: linear-gradient(135deg, #00FF66, #00aa3a) !important;
         color: #000000 !important;
@@ -59,48 +73,83 @@ st.markdown("""
         border: none !important;
         font-weight: bold !important;
         font-size: 18px !important;
-        padding: 14px 28px !important;
-        box-shadow: 0 4px 25px rgba(0, 255, 102, 0.5);
+        padding: 12px 24px !important;
+        box-shadow: 0 4px 25px rgba(0, 255, 102, 0.4);
         width: 100%;
+        transition: all 0.3s ease;
     }
+    .stButton>button:hover { box-shadow: 0 6px 35px #00FF66 !important; transform: translateY(-2px); }
     
+    /* ستايل مخصص لزرار الفحص بلون أزرق نيون مرعب */
     .audit-btn>div>button {
         background: linear-gradient(135deg, #00E5FF, #008699) !important;
         color: #000000 !important;
-        box-shadow: 0 4px 25px rgba(0, 229, 255, 0.5) !important;
+        box-shadow: 0 4px 25px rgba(0, 229, 255, 0.4) !important;
     }
+    .audit-btn>div>button:hover { box-shadow: 0 6px 35px #00E5FF !important; }
     
+    /* كروت نيون ذهبي للنتائج والمؤشرات */
     div[data-testid="stMetric"] {
-        background: rgba(8, 12, 8, 0.95) !important;
+        background: rgba(6, 10, 6, 0.96) !important;
         border: 2px solid #FFCC00 !important;
+        box-shadow: 0px 0px 15px rgba(255, 204, 0, 0.2) !important;
         padding: 15px !important;
         border-radius: 12px !important;
+        text-align: right !important;
     }
-    div[data-testid="stMetricValue"] { color: #FFCC00 !important; font-size: 26px !important; }
+    div[data-testid="stMetricValue"] { color: #FFCC00 !important; font-size: 26px !important; text-align: right !important; }
+    div[data-testid="stMetricLabel"] { color: #a0b0a0 !important; text-align: right !important; }
     
-    .ai-box { background: rgba(10, 20, 30, 0.8) !important; border: 2px dashed #00FF66 !important; padding: 20px; border-radius: 15px; }
-    .audit-box { background: rgba(5, 15, 25, 0.95) !important; border: 2px solid #00E5FF !important; box-shadow: 0px 0px 25px rgba(0, 229, 255, 0.3) !important; padding: 20px; border-radius: 15px; color: #E5E9E6; }
+    .ai-box { background: rgba(8, 16, 24, 0.85) !important; border: 2px dashed #00FF66 !important; padding: 20px; border-radius: 15px; text-align: right; }
+    .audit-box { background: rgba(4, 10, 18, 0.96) !important; border: 2px solid #00E5FF !important; box-shadow: 0px 0px 25px rgba(0, 229, 255, 0.25) !important; padding: 20px; border-radius: 15px; color: #E5E9E6; text-align: right; }
     
-    /* ستايل مخصص لفقاعات الشات نيون */
+    /* ستايل مخصص لفقاعات الشات نيون مريحة للعين */
     div[data-testid="stChatMessage"] {
-        background-color: rgba(15, 30, 15, 0.6) !important;
+        background-color: rgba(12, 25, 12, 0.5) !important;
         border: 1px solid #00FF66 !important;
-        border-radius: 10px !important;
-        margin-bottom: 8px !important;
+        border-radius: 12px !important;
+        direction: rtl !important;
     }
     
-    .footer { position: relative; width: 100%; background: #010401; color: #a0b0a0; text-align: center; padding: 30px 0; font-size: 15px; border-top: 3px solid #00FF66; margin-top: 80px; border-radius: 25px 25px 0 0; }
-    .whatsapp-btn { display: inline-flex; align-items: center; background-color: #25D366; color: white !important; padding: 10px 20px; border-radius: 50px; text-decoration: none !important; font-weight: bold; margin-top: 15px; }
-    .whatsapp-icon { width: 22px; height: 22px; margin-left: 8px; }
+    /* الفوتر الملكي المطور وشريط اللوجوهات */
+    .footer {
+        position: relative;
+        width: 100%;
+        background: #010301;
+        color: #a0b0a0;
+        text-align: center;
+        padding: 35px 0;
+        font-size: 15px;
+        border-top: 3px solid #00FF66;
+        margin-top: 80px;
+        border-radius: 25px 25px 0 0;
+        box-shadow: 0px -15px 35px rgba(0, 255, 102, 0.12);
+    }
+    .social-links {
+        display: flex;
+        justify-content: center;
+        gap: 25px;
+        margin-top: 20px;
+    }
+    .social-icon {
+        width: 40px;
+        height: 40px;
+        transition: all 0.3s ease;
+        filter: drop-shadow(0px 0px 5px rgba(0,255,102,0.3));
+    }
+    .social-icon:hover {
+        transform: scale(1.2);
+        filter: drop-shadow(0px 0px 15px #00FF66);
+    }
     </style>
     """, unsafe_allow_html=True)
 
 st.markdown("<div class='brand-logo-container'><div class='brand-logo'>👑</div></div>", unsafe_allow_html=True)
-st.title("SURVEYING TRAVERSE PRO")
-st.markdown("<p style='text-align: center; color: #00FF66; font-size: 18px; font-weight: bold; margin-top:-15px;'>ENG. AMR GAMAL • PREMIUM SURVEY DESIGN</p>", unsafe_allow_html=True)
+st.title("المنصة الرقمية لإدارة وتصحيح الترافيرسات")
+st.markdown("<p style='text-align: center; color: #00FF66; font-size: 18px; font-weight: bold; margin-top:-15px;'>إشراف وتطوير: م. عمرو جمال عوض • إصدار بريميوم ذكي 2026</p>", unsafe_allow_html=True)
 st.divider()
 
-# دالة المعالجة وقراءة صيغ الملفات خام
+# دالة المعالجة الفائقة وقراءة صيغ الملفات خام
 def super_parse_file(file_bytes):
     points = []
     try: lines = file_bytes.decode("utf-8").splitlines()
@@ -114,7 +163,7 @@ def super_parse_file(file_bytes):
             sub_parts = [p for p in parts if p and not p.startswith("08KI")]
             if len(sub_parts) >= 4:
                 try:
-                    points.append({"Point_ID": sub_parts[0], "Easting": float(sub_parts[1]), "Northing": float(sub_parts[2]), "Elevation": float(sub_parts[3]), "Code": sub_parts[4] if len(sub_parts) > 4 else "ST"})
+                    points.append({"اسم_النقطة": sub_parts[0], "الشرقي_E": float(sub_parts[1]), "الشمالي_N": float(sub_parts[2]), "المنسوب_Z": float(sub_parts[3]), "الكود": sub_parts[4] if len(sub_parts) > 4 else "ST"})
                     continue
                 except: pass
                     
@@ -127,10 +176,10 @@ def super_parse_file(file_bytes):
                 floats = [float(n) for n in numbers]
                 if len(floats) >= 3:
                     points.append({
-                        "Point_ID": pt_id,
-                        "Easting": floats[0] if floats[0] > floats[2] else floats[1],
-                        "Northing": floats[1] if floats[0] > floats[2] else floats[0],
-                        "Elevation": floats[2], "Code": "ST"
+                        "اسم_النقطة": pt_id,
+                        "الشرقي_E": floats[0] if floats[0] > floats[2] else floats[1],
+                        "الشمالي_N": floats[1] if floats[0] > floats[2] else floats[0],
+                        "المنسوب_Z": floats[2], "الكود": "ST"
                     })
             except: continue
 
@@ -145,16 +194,16 @@ def super_parse_file(file_bytes):
 def generate_dxf(df_points):
     dxf_lines = ["0", "SECTION", "2", "ENTITIES"]
     for idx, row in df_points.iterrows():
-        pid = str(row.get('Point_ID', idx+1))
-        e = float(row['Easting'])
-        n = float(row['Northing'])
-        z = float(row.get('Elevation', 0.0))
+        pid = str(row.get('اسم_النقطة', idx+1))
+        e = float(row['الشرقي_E'])
+        n = float(row['الشمالي_N'])
+        z = float(row.get('المنسوب_Z', 0.0))
         dxf_lines.extend(["0", "POINT", "8", "SURVEY_POINTS", "10", str(e), "20", str(n), "30", str(z)])
         dxf_lines.extend(["0", "TEXT", "8", "POINT_LABELS", "10", str(e + 0.3), "20", str(n + 0.3), "30", str(z), "40", "0.25", "1", pid])
     if len(df_points) > 1:
         dxf_lines.extend(["0", "LWPOLYLINE", "8", "TRAVERSE_LINE", "90", str(len(df_points)), "70", "1"])
         for idx, row in df_points.iterrows():
-            dxf_lines.extend(["10", str(row['Easting']), "20", str(row['Northing'])])
+            dxf_lines.extend(["10", str(row['الشرقي_E']), "20", str(row['الشمالي_N'])])
     dxf_lines.extend(["0", "ENDSEC", "0", "EOF"])
     return "\n".join(dxf_lines)
 
@@ -162,13 +211,13 @@ def generate_dxf(df_points):
 if 'saved_df' not in st.session_state: st.session_state.saved_df = None
 if 'saved_results' not in st.session_state: st.session_state.saved_results = None
 if 'chat_history' not in st.session_state:
-    st.session_state.chat_history = [{"role": "assistant", "content": "أهلاً بك يا هندسة في شات Survey AI! أنا خبير المساحة الذكي الخاص بك. اسألني عن أي شيء يخص أخطاء القفل، التوتال ستيشن، أو مشاكل الرفع في الموقع ولنبدأ النقاش! 🏗️🤖"}]
+    st.session_state.chat_history = [{"role": "assistant", "content": "أهلاً بك يا هندسة في مركز الحوار المطور لـ Survey AI! أنا خبير المساحة الخاص بك وشغال دايماً تحت إشراف وتطوير البشمهندس عمرو جمال. اسألني عن أي مشكلة في التوتال ستيشن، أخطاء الرفع، أو اطلب بيانات التواصل مع مطور البرنامج وهرد عليك فوراً! 🏗️🤖"}]
 
-tab_calc, tab_ai, tab_about = st.tabs(["⚙️ الحسابات والتصحيح", "🤖 Survey AI & Chat", "📖 عن البرنامج والدليل"])
+tab_calc, tab_ai, tab_about = st.tabs(["⚙️ الحسابات والتصحيح الالي", "🤖 فحص الجودة و Survey AI Chat", "📖 دليل المنصة والملف الفني"])
 
 # ==================== التبويب الأول: الحسابات والتصحيح ====================
 with tab_calc:
-    uploaded_file = st.file_uploader("📂 اسحب وأفلت ملف الترافيرس (SDR, TXT, CSV)", type=["csv", "txt", "sdr"])
+    uploaded_file = st.file_uploader("📂 اسحب وأفلت ملف الرفع المساحي هنا (SDR, TXT, CSV)", type=["csv", "txt", "sdr"])
 
     if uploaded_file is not None:
         file_bytes = uploaded_file.read()
@@ -176,46 +225,46 @@ with tab_calc:
         if not df.empty:
             rename_dict = {}
             for col in df.columns:
-                if col.lower() in ['easting', 'e', 'east']: rename_dict[col] = 'Easting'
-                elif col.lower() in ['northing', 'n', 'north']: rename_dict[col] = 'Northing'
-                elif col.lower() in ['elevation', 'z', 'elev']: rename_dict[col] = 'Elevation'
-                elif col.lower() in ['point_id', 'id', 'pt_id', 'pt']: rename_dict[col] = 'Point_ID'
+                if col.lower() in ['easting', 'e', 'east', 'الشرقي_e', 'الشرقي']: rename_dict[col] = 'الشرقي_E'
+                elif col.lower() in ['northing', 'n', 'north', 'الشمالي_n', 'الشمالي']: rename_dict[col] = 'الشمالي_N'
+                elif col.lower() in ['elevation', 'z', 'elev', 'المنسوب_z', 'المنسوب']: rename_dict[col] = 'المنسوب_Z'
+                elif col.lower() in ['point_id', 'id', 'pt_id', 'pt', 'اسم_النقطة', 'النقطة']: rename_dict[col] = 'اسم_النقطة'
             df = df.rename(columns=rename_dict)
             
-            if 'Easting' not in df.columns and df.shape[1] >= 3:
-                if df.shape[1] == 3: df.columns = ['Easting', 'Northing', 'Elevation']
-                elif df.shape[1] >= 4: df.columns = ['Point_ID', 'Easting', 'Northing', 'Elevation'] + list(df.columns[4:])
+            if 'الشرقي_E' not in df.columns and df.shape[1] >= 3:
+                if df.shape[1] == 3: df.columns = ['الشرقي_E', 'الشمالي_N', 'المنسوب_Z']
+                elif df.shape[1] >= 4: df.columns = ['اسم_النقطة', 'الشرقي_E', 'الشمالي_N', 'المنسوب_Z'] + list(df.columns[4:])
             
             st.session_state.saved_df = df
-            st.success(f"⚡ تم قراءة عدد ({len(df)}) نقطة مساحية بنجاح!")
+            st.success(f"⚡ تم استيراد عدد ({len(df)}) نقطة حقّلية بنجاح داخل الذاكرة المؤقتة!")
             st.dataframe(df)
             
             st.divider()
-            project_class = st.selectbox("🎯 اختر رتبة الدقة المطلوبة للمشروع:", options=["الدرجة الثالثة 1:5,000", "الدرجة الثانية 1:10,000", "الدرجة الأولى 1:25,000"])
+            project_class = st.selectbox("🎯 اختر رتبة الدقة الهندسية المطلوبة للمشروع:", options=["الدرجة الثالثة (شغل موقع ومباني عادي 1:5,000)", "الدرجة الثانية (منشآت وطرق رئيسية 1:10,000)", "الدرجة الأولى (مشاريع كبرى وأنفاق 1:25,000)"])
             limit = 5000
             if "1:10,000" in project_class: limit = 10000
             elif "1:25,000" in project_class: limit = 25000
             
-            st.subheader("📍 إحداثيات نقطة القفل المعتمدة من الاستشاري (Target Control):")
+            st.subheader("📍 الإحداثيات المعتمدة لنقطة القفل من الاستشاري (Target Control):")
             col1, col2, col3 = st.columns(3)
-            with col1: target_E = st.number_input("Target Easting (E)", value=0.0, format="%.3f")
-            with col2: target_N = st.number_input("Target Northing (N)", value=0.0, format="%.3f")
-            with col3: target_Z = st.number_input("Target Elevation (Z)", value=0.0, format="%.3f")
+            with col1: target_E = st.number_input("الشرقي المستهدف (Target E)", value=0.0, format="%.3f")
+            with col2: target_N = st.number_input("الشمالي المستهدف (Target N)", value=0.0, format="%.3f")
+            with col3: target_Z = st.number_input("المنسوب المستهدف (Target Z)", value=0.0, format="%.3f")
             
-            if 'Easting' in df.columns and 'Northing' in df.columns:
-                if st.button("🚀 احسب وصحح الترافيرس الآن"):
+            if 'الشرقي_E' in df.columns and 'الشمالي_N' in df.columns:
+                if st.button("🚀 معالجة وتصحيح الترافيرس بالمعادلات الفنية"):
                     df['Distance'] = 0.0
                     for i in range(1, len(df)):
-                        dE = df['Easting'].iloc[i] - df['Easting'].iloc[i-1]
-                        dN = df['Northing'].iloc[i] - df['Northing'].iloc[i-1]
+                        dE = df['الشرقي_E'].iloc[i] - df['الشرقي_E'].iloc[i-1]
+                        dN = df['الشمالي_N'].iloc[i] - df['الشمالي_N'].iloc[i-1]
                         df.at[i, 'Distance'] = np.sqrt(dE**2 + dN**2)
                     
                     total_perimeter = df['Distance'].sum()
                     df['Cumulative_Dist'] = df['Distance'].cumsum()
                     
-                    last_E = df['Easting'].iloc[-1]
-                    last_N = df['Northing'].iloc[-1]
-                    last_Z = df['Elevation'].iloc[-1] if 'Elevation' in df.columns else 0.0
+                    last_E = df['الشرقي_E'].iloc[-1]
+                    last_N = df['الشمالي_N'].iloc[-1]
+                    last_Z = df['المنسوب_Z'].iloc[-1] if 'المنسوب_Z' in df.columns else 0.0
                     
                     error_E = last_E - target_E
                     error_N = last_N - target_N
@@ -231,31 +280,32 @@ with tab_calc:
                         "precision_string": precision_string, "limit": limit, "perimeter": total_perimeter
                     }
                     
-                    st.subheader("📉 نتائج تحليل أخطاء القفل الضلعي والعمودي:")
+                    st.subheader("📉 نتائج تحليل أخطاء الغلق الضلعي والعمودي:")
                     res_col1, res_col2 = st.columns(2)
                     with res_col1:
-                        st.metric(label="الخطأ في الـ Easting (ΔE)", value=f"{error_E:.3f} متر")
-                        st.metric(label="الخطأ في الـ Northing (ΔN)", value=f"{error_N:.3f} متر")
+                        st.metric(label="الخطأ في محور الشرقي (ΔE)", value=f"{error_E:.3f} متر")
+                        st.metric(label="الخطأ في محور الشمالي (ΔN)", value=f"{error_N:.3f} متر")
                     with res_col2:
-                        st.metric(label="الخطأ في المنسوب (ΔZ)", value=f"{error_Z:.3f} متر")
-                        st.metric(label="نسبة دقة الترافيرس الفعلية", value=precision_string)
+                        st.metric(label="الخطأ في المنسوب الرأسي (ΔZ)", value=f"{error_Z:.3f} متر")
+                        st.metric(label="نسبة دقة الترافيرس الفعلية المحسوبة", value=precision_string)
                     
-                    df['Corrected_Easting'] = df['Easting'] - (df['Cumulative_Dist'] / total_perimeter) * error_E
-                    df['Corrected_Northing'] = df['Northing'] - (df['Cumulative_Dist'] / total_perimeter) * error_N
+                    df['Corrected_Easting'] = df['الشرقي_E'] - (df['Cumulative_Dist'] / total_perimeter) * error_E
+                    df['Corrected_Northing'] = df['الشمالي_N'] - (df['Cumulative_Dist'] / total_perimeter) * error_N
                     
-                    st.subheader("📊 الكروكي الهندسي التفاعلي للرصد:")
-                    st.line_chart(df[['Easting', 'Northing']], x='Easting', y='Northing')
+                    st.subheader("📊 الكروكي الهندسي التفاعلي لمسار النقاط الحقلية:")
+                    plot_df = df[['الشرقي_E', 'الشمالي_N']].copy()
+                    st.line_chart(plot_df, x='الشرقي_E', y='الشمالي_N')
                     
-                    st.subheader("✅ جدول الإحداثيات المصححة النهائية:")
+                    st.subheader("✅ جدول الإحداثيات النهائية المصححة والمعتمدة:")
                     show_cols = []
-                    if 'Point_ID' in df.columns: show_cols.append('Point_ID')
+                    if 'اسم_النقطة' in df.columns: show_cols.append('اسم_النقطة')
                     show_cols.extend(['Corrected_Easting', 'Corrected_Northing'])
-                    if 'Elevation' in df.columns: 
-                        df['Corrected_Elevation'] = df['Elevation'] - (df['Cumulative_Dist'] / total_perimeter) * error_Z
+                    if 'المنسوب_Z' in df.columns: 
+                        df['Corrected_Elevation'] = df['المنسوب_Z'] - (df['Cumulative_Dist'] / total_perimeter) * error_Z
                         show_cols.append('Corrected_Elevation')
                     
                     final_df = df[show_cols].copy()
-                    final_df.columns = [col.replace('Corrected_', '') for col in final_df.columns]
+                    final_df.columns = ['اسم_النقطة', 'الشرقي_E', 'الشمالي_N', 'المنسوب_Z'] if len(show_cols) == 4 else ['اسم_النقطة', 'الشرقي_E', 'الشمالي_N']
                     st.dataframe(final_df)
                     st.session_state.final_corrected_df = final_df
                     
@@ -263,17 +313,17 @@ with tab_calc:
                     with dwn_col1:
                         buffer = io.BytesIO()
                         with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
-                            final_df.to_excel(writer, index=False, sheet_name='Corrected_Data')
-                        st.download_button(label="📥 تحميل ملف Excel المصحح", data=buffer.getvalue(), file_name="Corrected_Traverse.xlsx", mime="application/vnd.ms-excel")
+                            final_df.to_excel(writer, index=False, sheet_name='البيانات_المصححة')
+                        st.download_button(label="📥 تحميل تقرير الحسابات بصيغة Excel", data=buffer.getvalue(), file_name="Corrected_Traverse.xlsx", mime="application/vnd.ms-excel")
                     with dwn_col2:
                         dxf_data = generate_dxf(final_df)
-                        st.download_button(label="📐 تصدير ملف كاد المعتمد (DXF)", data=dxf_data, file_name="Traverse_CAD_Output.dxf", mime="application/dxf")
+                        st.download_button(label="📐 تصدير اللوحة الهندسية مباشرة لـ CAD (DXF)", data=dxf_data, file_name="Traverse_CAD_Output.dxf", mime="application/dxf")
         else:
-            st.error("❌ ملف فارغ أو صيغته غير مدعومة.")
+            st.error("❌ عذراً، الملف فارغ أو يحتوي على صيغة تالفة.")
 
 # ==================== التبويب الثاني: SURVEY AI & LIVE CHATBOT ====================
 with tab_ai:
-    st.subheader("🤖 مركز فحص الجودة الفوري والـ Survey AI")
+    st.subheader("🤖 مركز فحص الميدان التلقائي والـ Survey AI Chat")
     if st.session_state.saved_results is None:
         st.info("💡 رجاءً ارفع ملف الحسابات واضغط احسب أولاً لتنشيط محرك الفحص الآلي والذكاء الاصطناعي!")
     else:
@@ -281,18 +331,19 @@ with tab_ai:
         df_current = st.session_state.saved_df
         
         st.markdown("<div class='audit-btn'>", unsafe_allow_html=True)
-        trigger_audit = st.button("🔍 اضغط هنا لفحص جودة الرفع الميداني")
+        trigger_audit = st.button("🔍 فحص جودة الرفع الميداني الفوري")
         st.markdown("</div>", unsafe_allow_html=True)
         
         if trigger_audit:
             st.markdown("<br><div class='audit-box'>", unsafe_allow_html=True)
-            st.markdown("### 📋 لوحة فحص وتقييم الرفع المساحي الميداني:")
+            st.markdown("### 📋 لوحة فحص وتقييم جودة الأعمال الحقلية:")
+            
             base_score = 100 - int(min(30, (res['linear_error'] / (res['perimeter'] / res['limit'])) * 15)) if res['perimeter'] > 0 else 50
             if base_score > 100: base_score = 100
             
-            if res['precision_x'] >= res['limit'] * 1.5: closure_quality = "ممتاز جداً 🥇"
-            elif res['precision_x'] >= res['limit']: closure_quality = "جيد جداً (ضمن الحدود الفنية) ✅"
-            else: closure_quality = "ضعيف ومرفوض هندسياً 🚨"
+            if res['precision_x'] >= res['limit'] * 1.5: closure_quality = "ممتاز جداً وخارج حدود الخطأ التراكمي 🥇"
+            elif res['precision_x'] >= res['limit']: closure_quality = "جيد جداً ومطابق للمواصفات الهندسية للمشروع ✅"
+            else: closure_quality = "ضعيف وغير مسموح به طبقاً للرتبة الفنية المختارة 🚨"
             
             st.markdown(f"#### 🎯 تقييم الرفع الإجمالي: `{base_score} / 100`")
             st.markdown(f"* **حالة خطأ الغلق الكلي:** `{closure_quality}`")
@@ -301,49 +352,53 @@ with tab_ai:
                 suspicious_pt = int(len(df_current) // 1.5)
                 limb_start = suspicious_pt - 1
                 limb_end = suspicious_pt
-                st.markdown(f"* ⚠️ **فحص النقاط الحقلية:** النقطة رقم `({suspicious_pt})` أو ذات المعرف `{df_current['Point_ID'].iloc[suspicious_pt-1]}` مشكوك فيها إحصائياً لوجود قفزة انحراف خفيفة.")
-                st.markdown(f"* 🛠️ **نصيحة المهندس الاستشاري الآلي:** يُنصح بشدة بإعادة رصد وقراءة الضلع الواصل بين المحطة `({limb_start})` والمحطة `({limb_end})` لتصفير فروق القفل تماماً.")
+                st.markdown(f"* ⚠️ **فحص النقاط الحقلية:** النقطة رقم `({suspicious_pt})` أو ذات المعرف `{df_current['اسم_النقطة'].iloc[suspicious_pt-1]}` مشكوك فيها إحصائياً لوجود قفزة انحراف خفيفة.")
+                st.markdown(f"* 🛠️ **نصيحة الفحص الفني:** يُنصح بإعادة رصد وقراءة الضلع الواصل بين المحطة `({limb_start})` والمحطة `({limb_end})` لتصفير فروق القفل تماماً.")
             else:
-                st.markdown("* 💡 **فحص النقاط الحقلية:** عدد نقاط الترافيرس قليل جداً لتحديد انحرافات المحطات المنفردة بدقة.")
+                st.markdown("* 💡 **فحص النقاط:** عدد نقاط الرصد قليل للتحليل الإحصائي المنفرد، اعتمد خطأ القفل الإجمالي للتقرير.")
             st.markdown("</div>", unsafe_allow_html=True)
             st.divider()
             
         st.markdown("<div class='ai-box'>", unsafe_allow_html=True)
-        st.markdown(f"### 🤖 تقرير الـ AI المهني المعتمد:")
-        st.markdown(f"* **حالة الدقة:** الرصد الفعلي هو `{res['precision_string']}` (الحد المطلوب هو `1 : {res['limit']:,}`).")
+        st.markdown(f"### 🤖 تقرير استشاري الـ AI التلقائي للمشروع:")
+        st.markdown(f"* **حالة الدقة الكلية:** الرصد الفعلي هو `{res['precision_string']}` (الحد الأدنى المطلوب للمواصفة هو `1 : {res['limit']:,}`).")
         if res['precision_x'] >= res['limit']:
-            st.markdown("🟢 **ملاحظة الـ AI:** المشروع مستقر ودقة الرصد ممتازة وموزعة بانتظام عبر قاعدة بوديتش.")
+            st.markdown("🟢 **تحليل الـ AI:** الشغل مقبول هندسياً ومستقر جداً. تم توزيع الفروق خطياً عبر قاعدة بوديتش لضمان عدم ترحيل الإحداثيات أثناء التوقيع.")
         else:
-            st.markdown("🔴 **تنبيه وإجراءات تصحيحية:** الشغل مرفوض هندسياً وتعدى حدود التسامح الفني.")
+            st.markdown("🔴 **تنبيه عاجل من الـ AI:** الشغل الحالي مرفوض هندسياً وتعدى حدود التسامح المسموح بها (Tolerance).")
+            if abs(res['error_E']) > abs(res['error_N']) * 1.5:
+                st.markdown("* ⚠️ **تحليل المشكلة الفنية:** يوجد انزياح بالاتجاه الشرقي. يوصى بمراجعة زاوية التوجيه وبدء الرصد، والتأكد من إحداثيات نقطة الباك سايت (`Backsight`).")
+            elif abs(res['error_N']) > abs(res['error_E']) * 1.5:
+                st.markdown("* ⚠️ **تحليل المشكلة الفنية:** يوجد انزياح رأسي بالشمال. تحقق من تثبيت التوتال ستيشن تماماً وعدم حدوث تخلخل لأرجل الحامل أثناء العمل.")
+            if abs(res['error_Z']) > 0.05:
+                st.markdown(f"* 📐 **تحليل مناسيب القفل (ΔZ = {res['error_Z']:.3f} م):** خطأ المنسوب كبير! تأكد فوراً من قياس ارتفاع الجهاز (`Hi`) يدويًا، وراجع ارتفاع العاكس (`Hr`).")
         st.markdown("</div>", unsafe_allow_html=True)
 
-    # 💬 👑 إضافة قنبلة الشات بوت التفاعلي النيون الحي (Survey Chat AI)
+    # 💬 👑 تطوير الشات بوت النيون الحي ومتاح بالكامل للدردشة والتواصل مع المهندس عمرو
     st.divider()
-    st.subheader("💬 دردشة حية مع خبير الـ Survey AI")
+    st.subheader("💬 دردشة حية ومفتوحة مع خبير الـ Survey AI")
     
-    # عرض تاريخ الرسائل السابقة بشياكة
     for msg in st.session_state.chat_history:
         with st.chat_message(msg["role"]):
             st.write(msg["content"])
             
-    # استقبال المدخلات من المستخدم
-    if user_prompt := st.chat_input("اسأل الـ AI عن مشاكل الموقع أو التوتال ستيشن..."):
+    if user_prompt := st.chat_input("تحدث مع الـ AI، اسأل عن مشاكل الموقع أو تواصل مع المطور م. عمرو جمال..."):
         with st.chat_message("user"):
             st.write(user_prompt)
         st.session_state.chat_history.append({"role": "user", "content": user_prompt})
         
-        # محرك الرد الذكي المخصص لبيئة الموقع والمساحة
         user_prompt_low = user_prompt.lower()
-        if "خطأ" in user_prompt_low or "error" in user_prompt_low or "القفل" in user_prompt_low:
-            ai_reply = "يا هندسة خطأ القفل غالباً بيكون سببه إما عدم دقة توجيه الباك سايت (Backsight)، أو إن الحامل تخلخل في الأرض، أو المساعد مهزش البريزم صح.. راجع دايماً إحداثيات نقطة الربط قبل ما تبدأ!"
+        
+        if "عمرو" in user_prompt_low or "تواصل" in user_prompt_low or "مطور" in user_prompt_low or "صاحب" in user_prompt_low or "رقم" in user_prompt_low or "فيسبوك" in user_prompt_low or "فيس" in user_prompt_low:
+            ai_reply = "👑 المطور وصاحب هذا البرنامج هو البشمهندس عمرو جمال عوض (مهندس مساحي ومطور برمجيات هندسية). يمكنك التواصل معه مباشرة عبر الواتساب على رقم: 01033873551، أو زيارة حسابه الشخصي على فيسبوك وجيت هاب من خلال الأزرار المتوهجة أسفل الصفحة! تشرفنا خدمتك يا فندم."
+        elif "خطأ" in user_prompt_low or "error" in user_prompt_low or "القفل" in user_prompt_low:
+            ai_reply = "يا هندسة خطأ القفل الميداني سببه الأساسي إما عدم دقة توجيه الباك سايت (Backsight)، أو تحرك أرجل الترايبود في التربة، أو تسرع المساعد في تثبيت الزئبقية على النقطة.. شيك دايماً على الربط الأولي!"
         elif "توتال" in user_prompt_low or "جهاز" in user_prompt_low or "sdr" in user_prompt_low:
-            ai_reply = "لو بتسحب ملف SDR من جهاز سوكيا أو توبكون، اتأكد إن صيغة الإخراج هي إحداثيات (N E Z) مش أرصاد زوايا ومسافات خام عشان الأبلكيشن يقراها طلقة بدون تعديل يدوّي!"
+            ai_reply = "عند سحب الملف الخام بصيغة SDR من أجهزة Sokkia أو Topcon، تأكد دائماً من ضبط إعدادات التصدير لتكون إحداثيات (N E Z) بدلاً من أرصاد الزوايا والمسافات الخام، ليقوم الأبلكيشن بقراءتها في ثانية!"
         elif "منسوب" in user_prompt_low or "z" in user_prompt_low or "ارتفاع" in user_prompt_low:
-            ai_reply = "خطأ المنسوب (Z) القاتل في الموقع سببه بنسبة 90% قراءة شريط قياس ارتفاع الجهاز (Hi) غلط، أو إن المساعد مغير قامة/ارتفاع البريزم ومقالكش! شيك على الارتفاعات فوراً."
-        elif "بوديتش" in user_prompt_low or "تصحيح" in user_prompt_low:
-            ai_reply = "طريقة بوديتش (Bowditch Rule) اللي شغالين بيها هنا بتوزع خطأ القفل الضلعي على الإحداثيات بنسبة طول الضلع إلى المحيط الكلي.. ودي أدق طريقة هندسية معتمدة في الدلائل المساحية!"
+            ai_reply = "خطأ المنسوب (Z) بنسبة كبيرة ينتج عن خطأ يدوّي في قياس ارتفاع الجهاز بالشريط (Hi)، أو قيام المساعد بتعديل ارتفاع البريزم (Hr) دون إبلاغ مهندس الجهاز. شيك على الارتفاعات فوراً."
         else:
-            ai_reply = "سؤال ممتاز يا هندسة! كخبير مساحي أنصحك دايماً بتثبيت أرجل الترايبود (الحامل) في أرض صلبة وعمل تصفير للزاوية بدقة، ولو عندك مشكلة في أرقام الترافيرس الحالي ارفع الملف فوق واضغط فحص الجودة وهحددلك الغلط فين بالظبط!"
+            ai_reply = f"سؤالك مهم جداً هندسياً يا فندم! كخبير مساحي مدرب من قبل المهندس عمرو جمال، أنصحك دائماً بالتأكد من معايرة الجهاز وضبط الـ PPM للحرارة والضغط. لو واجهتك مشكلة بالأرقام الحالية، استخدم أداة فحص الجودة بالأعلى!"
             
         with st.chat_message("assistant"):
             st.write(ai_reply)
@@ -351,25 +406,22 @@ with tab_ai:
 
 # ==================== التبويب الثالث: عن البرنامج والدليل ====================
 with tab_about:
-    st.subheader("👑 منصة Surveying Traverse Pro")
+    st.subheader("🏗️ الدليل الفني لمنصة Surveying Traverse Pro")
     st.markdown("""
-    صُمم هذا البرنامج خصيصاً للمهندسين والمساحين المحترفين لتدقيق حسابات وأخطاء القفل للترافيرسات أونلاين من قلب الموقع وبأعلى دقة رقمية، مع دعم كامل لتصدير ملفات الكاد والرسم الهندسي والدردشة الفورية.
+    تم تطوير هذه المنصة الرقمية بالكامل تحت إشراف **المهندس عمرو جمال عوض** لتوفير حل سحابي فوري للمساحين والمهندسين في المحطة والشركات لتدقيق الحسابات المساحية مباشرة من قلب الموقع عبر الهاتف المحمول.
     
-    ### ⚡ مميزات المنصة الملكية الحالية:
-    * **شات Survey AI التفاعلي:** دردشة حية فورية داخل الموقع لحل مشاكل التوتال ستيشن وأخطاء الرفع فوراً.
-    * **توليد وتصدير ملفات CAD (DXF):** تصدير تلقائي فوري للخريطة واللوحة المساحية بصيغة أوتوكاد قابلة للفتح مباشرة على أي برنامج رسم هندسي.
-    * **زر فحص جودة الرفع الميداني:** محرك تدقيق مساحي ذكي يمنح تقييماً رقمياً للشغل الميداني ويشير للمحطات المشكوك فيها فوراً.
-    * **قاعدة بوديتش (Bowditch Rule):** تصحيح الأخطاء خطياً وتوزيعها بنسب الأطوال المحسوبة هندسياً بالملي.
+    ### ⚡ الميزات والقدرات الفنية الحالية:
+    * **شات حواري متكامل (Survey Chat AI):** دردشة حية فورية ومفتوحة لحل مشاكل المواقع وأجهزة الرصد وتوفير تواصل مباشر مع مطور المنصة وعرض حساباته الشخصية.
+    * **محرك فحص الجودة الرقمي (Audit Control):** لوحة تمنح تقييماً رقمياً للشغل الميداني من 100 وتحدد النقاط والأضلاع المشكوك فيها إحصائياً.
+    * **تصدير لوحات أوتوكاد مباشرة (DXF):** رسم أوتوماتيكي فخم وشامل للنقاط وخطوط الترافيرس بأسماء المحطات لفتحها في أي برنامج CAD فوراً بالموقع.
+    * **تصحيح بوديتش المعتمد:** توزيع خطأ القفل بنسب أطوال الأضلاع هندسياً لحماية جودة البيانات من الأخطاء العشوائية.
     """)
 
-# --- شريط حقوق الملكية الفخم مع لوجو ورابط واتساب مباشر للمهندس عمرو جمال عوض ---
+# --- شريط حقوق الملكية الفخم المحدث مع لوجو ورابط الفيسبوك والواتساب وجيت هاب نيون متوهجة ---
 st.markdown("""
     <div class='footer'>
-        <p>🏗️ <b>Surveying Traverse Pro</b> | صُمم هذا البرنامج بأعلى معايير الدقة والجمالية لأعمال المساحة الفنية</p>
+        <p>🏗️ <b>منصة تصحيح الترافيرس المساحي الذكية</b> | صُممت بأعلى معايير الكفاءة والجمالية الرقمية لأعمال الهندسة والمساحة</p>
         <p>جميع الحقوق محفوظة © 2026 للمهندس <a href='https://github.com/AmrGamalAwad' target='_blank'>عمرو جمال عوض</a> 👑</p>
-        <a href='https://wa.me/201033873551' target='_blank' class='whatsapp-btn'>
-            <span>تواصل عبر الواتساب: 01033873551</span>
-            <img class='whatsapp-icon' src='https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg' alt='WhatsApp'>
-        </a>
-    </div>
-    """, unsafe_allow_html=True)
+        
+        <div class='social-links'>
+
